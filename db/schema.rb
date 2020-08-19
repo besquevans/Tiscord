@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_161301) do
+ActiveRecord::Schema.define(version: 2020_08_19_161636) do
 
   create_table "boards", force: :cascade do |t|
     t.string "name"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2020_08_19_161301) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "board_id"
+    t.index ["board_id"], name: "index_messages_on_board_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -50,5 +52,6 @@ ActiveRecord::Schema.define(version: 2020_08_19_161301) do
   end
 
   add_foreign_key "boards", "groups"
+  add_foreign_key "messages", "boards"
   add_foreign_key "messages", "users"
 end
