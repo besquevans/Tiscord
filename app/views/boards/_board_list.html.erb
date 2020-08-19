@@ -1,0 +1,37 @@
+<div class="modal fade" id="new-board" tabindex="-1" role="dialog" aria-labelledby="new-board-Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <%= form_with(model: board, url: group_boards_path(group) ,local: true, html: {class: "my-4"}) do |form| %>
+        <div class="modal-body">
+          <h3>New board</h3>
+          <div class="form-board">
+            <%= form.text_field :name, placeholder: "board name" %>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <div class="actions">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <%= form.submit "Create", class:"btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% boards.each do |b| %>
+  <div class="card mb-2">
+    <div class="card-body">
+      <h5 class="card-title text-muted">
+        <%= b.name %>
+      </h5>
+    </div>
+  </div>
+<% end %>
+
+<button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#new-board">
+  +
+</button>
+
