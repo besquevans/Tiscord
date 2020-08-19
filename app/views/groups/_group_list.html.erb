@@ -22,7 +22,8 @@
 </div>
 
 <% groups.each do |g| %>
-  <%= link_to group_path(g)  do %> 
+  <!------g.boards.first.id????------------------------------->
+  <%= link_to group_board_path(g, g.boards.first.id)  do %> 
     <div class="card mb-2">
       <div class="card-body">
         <h5 class="card-title text-muted">

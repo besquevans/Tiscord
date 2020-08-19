@@ -2,18 +2,21 @@ class GroupsController < ApplicationController
   def index 
     @groups = Group.all
     @newgroup = Group.new
+
+    # @baords = @groups.map{|group| group.boards.first}
   end
 
-  def show 
-    @groups = Group.all
-    @newgroup = Group.new
-    @group = Group.find(params[:id])
+  # def show 
+  #   @groups = Group.all
+  #   @newgroup = Group.new
+  #   @group = Group.find(params[:id])
 
-    @boards = @group.boards
-    @board = Board.new
+  #   @boards = @group.boards
+  #   @board = Board.new
 
-    @message = Message.new
-  end
+  #   @messages = @board.messages
+  #   @message = Message.new
+  # end
 
   def create 
     @group = Group.create(group_params)
