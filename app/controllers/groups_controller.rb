@@ -11,6 +11,8 @@ class GroupsController < ApplicationController
 
     @boards = @group.boards
     @board = Board.new
+
+    @message = Message.new
   end
 
   def create 
