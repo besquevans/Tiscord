@@ -8,6 +8,9 @@ class GroupsController < ApplicationController
     @groups = Group.all
     @newgroup = Group.new
     @group = Group.find(params[:id])
+
+    @boards = @group.boards
+    @board = Board.new
   end
 
   def create 
