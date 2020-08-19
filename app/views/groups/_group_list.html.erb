@@ -1,0 +1,39 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-group">
+  +
+</button>
+
+<div class="modal fade" id="new-group" tabindex="-1" role="dialog" aria-labelledby="new-group-Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <%= form_with(model: newgroup, local: true, html: {class: "my-4"}) do |form| %>
+        <div class="modal-body">
+          <h3>New Group</h3>
+          <div class="form-group">
+            <%= form.text_field :name, placeholder: "Group name" %>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <div class="actions">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <%= form.submit "Create", class:"btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% groups.each do |g| %>
+  <%= link_to group_path(g)  do %> 
+    <div class="card mb-2">
+      <div class="card-body">
+        <h5 class="card-title text-muted">
+          <%= g.name %>
+        </h5>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
