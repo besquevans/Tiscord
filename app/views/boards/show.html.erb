@@ -3,8 +3,8 @@
     <%= render  "/groups/group_list", newgroup:@newgroup, groups: @groups %>
   </div>
 
-  <div class="container-fluid">
-    <div class="row h-100">
+  <div class="container-fluid px-0">
+    <div class="row no-gutters h-100">
       <div class="col-3">
         <div class="baord_list bg-secondary h-100">
           <%= render  "/boards/board_list", group: @group, boards: @boards, board: @board, newboard: @newboard %>
