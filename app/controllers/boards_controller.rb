@@ -5,10 +5,11 @@ class BoardsController < ApplicationController
     @newgroup = Group.new
 
     @boards = @group.boards
-    @board = @group.boards.find(params[:id])
+    @board = Board.find(params[:id])
     @newboard = Board.new 
 
     @messages = @board.messages
+    @message = Message.new
   end
 
   def create
