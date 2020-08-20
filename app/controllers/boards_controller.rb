@@ -14,11 +14,11 @@ class BoardsController < ApplicationController
 
   def create
     @group = Group.find(params[:group_id])
-    @board = @group.boards.create(board_params)
-    if @board.save 
-      redirect_to group_path(@group), notice: "group create success"
+    @newboard = @group.boards.create(board_params)
+    if @newboard.save 
+      redirect_to group_board_path(@group, @newboard), notice: "group create success"
     else
-      redirect_to group_path(@group), notice: "group create false"
+      redirect_to group_board_path(@group, @newboard), notice: "group create false"
     end
   end
 
