@@ -1,19 +1,19 @@
 <div class="wrap d-flex vh-100">
   <div class="group-list bg-dark">
-    <%= render  "group_list", newgroup:@newgroup, groups: @groups %>
+    <%= render  "/groups/group_list", newgroup:@newgroup, groups: @groups %>
   </div>
 
   <div class="container-fluid">
     <div class="row h-100">
       <div class="col-3">
         <div class="baord_list bg-secondary h-100">
-          <%= render  "/boards/board_list", group: @group, board: @board, boards: @boards %>
+          <%= render  "/boards/board_list", group: @group, boards: @boards, newboard: @newboard %>
         </div>
       </div>
 
       <div class="col-9">
         <div class="messages bg-info h-100">
-          message
+          <%= render  "/messages/message_list", group: @group, board: @board, message: @message, messages: @messages %>
         </div>
       </div>
     </div>

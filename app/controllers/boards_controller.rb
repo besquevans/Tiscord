@@ -1,4 +1,16 @@
 class BoardsController < ApplicationController
+  def show 
+    @groups = Group.all 
+    @group = Group.find(params[:group_id])
+    @newgroup = Group.new
+
+    @boards = @group.boards
+    @board = @group.boards.find(params[:id])
+    @newboard = Board.new 
+
+    @messages = @board.messages
+  end
+
   def create
     @group = Group.find(params[:group_id])
     @board = @group.boards.create(board_params)
