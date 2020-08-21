@@ -1,21 +1,6 @@
-<% @messages.each do |message| %>
-  <div class="card mb-2">
-    <div class="card-body">
-      <h5 class="card-title text-muted">
-        <%= message.user.username %>
-        <small>
-          -
-          <%= time_ago_in_words message.created_at %>
-          age
-        </small>
-      </h5>
-
-      <div class="card-text lead mb-2">
-        <%= message.content %>
-      </div>
-    </div>
-  </div>
-<% end %>     
+<div id="board-messages">
+  <%= render partial: "/messages/message", collection: messages %>  
+</div>
 
 <%= form_with(model: message, url: group_board_messages_path(group, board) ,local: true, html: {class: "form-inline w-100"}) do |form| %>
 
