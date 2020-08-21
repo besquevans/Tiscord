@@ -6,6 +6,7 @@ class BoardsController < ApplicationController
 
     @boards = @group.boards
     @board = Board.find(params[:id])
+    session[:board_id] = @board.id
     @newboard = Board.new 
 
     @messages = @board.messages
@@ -18,7 +19,7 @@ class BoardsController < ApplicationController
     if @newboard.save 
       redirect_to group_board_path(@group, @newboard), notice: "group create success"
     else
-      redirect_to group_board_path(@group, @newboard), notice: "group create false"
+      redirect_to group_board_path(@group, session[:board_id]), notice: "group create false"
     end
   end
 

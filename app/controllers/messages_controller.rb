@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
     @group = Group.find(params[:group_id])
     @board = Board.find(params[:board_id])
     @message = @board.messages.create(message_params)
+
     if @message.save 
       redirect_to group_board_path(@group, @board), notice: "create message success"
     else
