@@ -1,21 +1,14 @@
 <div class="wrap d-flex vh-100">
-  <div class="group-list bg-dark">
+  <div class="group-list bg-dark fixed-top h-100">
     <%= render  "/groups/group_list", newgroup:@newgroup, groups: @groups %>
   </div>
 
-  <div class="container-fluid px-0">
-    <div class="row no-gutters h-100">
-      <div class="col-3">
-        <div class="baord_list bg-secondary h-100">
-          <%= render  "/boards/board_list", group: @group, boards: @boards, board: @board, newboard: @newboard %>
-        </div>
-      </div>
-
-      <div class="col-9">
-        <div class="messages bg-info h-100">
-          <%= render  "/messages/message_list", group: @group, board: @board, messages: @messages, message: @message %>
-        </div>
-      </div>
-    </div>
+  <div class="baord-list bg-secondary fixed-top h-100">
+    <%= render  "/boards/board_list", group: @group, boards: @boards, board: @board, newboard: @newboard %>
   </div>
+
+  <div class="messages-list bg-info w-100 h-100">
+    <%= render  "/messages/message_list", group: @group, board: @board, messages: @messages, message: @message %>
+  </div>
+      
 </div>

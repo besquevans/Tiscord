@@ -1,10 +1,20 @@
 .group-list {
-  width: 100px;
+  width: 70px;
 }
 
-.messages {
-  form{
-    position: absolute;
-    bottom: 0;
-  }
+.baord-list {
+  margin-left: 70px;
+  width: 160px;
+}
+
+.messages-list {
+  margin-left: 230px
+}
+
+#board-messages{
+  margin-bottom: 38px
+}
+
+.message-form {
+  padding-left: 230px
 }
