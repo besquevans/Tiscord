@@ -3,6 +3,7 @@ import consumer from './consumer';
 
 consumer.subscriptions.create('BoardChannel', {
   received(data) {
+    console.log("received!!!!!!")
     if (data.cableReady) CableReady.perform(data.operations);
   },
 });
