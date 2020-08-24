@@ -1,44 +1,64 @@
 body {
   overflow: hidden; 
+  height: 100vh;
 }
 
 #main-navbar{
   min-height: 70px;
-  height: 7vh;
 }
 
 #main-content{
-  margin-top: 8vh;
-  height: 85vh;
-}
+  margin-top: 70px;
+  height: 100%;
+//   position: relative;
+//   width: 100%;
+//   font-size: 0;
+  
 
-.group-list {
-  width: 70px;
-  overflow: scroll;
-}
+  .row {
+    height: 100vh;
 
-.baord-list {
-  width: 160px;
-  overflow: scroll;
-}
-
-.messages-list {
-  overflow: scroll;
-  margin-bottom: 50px;
-}
-
-#board-messages{
-  margin-bottom: 38px;
-}
-
-.message-form {
-  // padding-left: 230px;
-
-  input {
-    height: 7vh
+    .col {
+      height: 100%;
+      overflow-y: auto;
+    }
   }
 }
 
-.modal-backdrop {
-  z-index: -5;
+#left-content {
+  height: 100%;
 }
+
+.group-list {
+//   display: inline-block;
+//   width: 70px;
+width: 100%;
+}
+
+.baord-list {
+//   display: inline-block;
+//   width: 160px;
+width: 100%;
+}
+
+.messages-list {
+//   display: inline-block;
+width: 100%;
+//   width: calc(100% - 230px);
+}
+
+#board-messages{
+  margin-bottom: 15%;
+}
+
+.message-form {
+  position: fixed;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  padding-left: 25%;
+}
+
+// .modal-backdrop {
+//   z-index: -5;
+// }

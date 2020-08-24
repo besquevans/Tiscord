@@ -9,7 +9,7 @@ class BoardsController < ApplicationController
     session[:board_id] = @board.id
     @newboard = Board.new 
 
-    @messages = @board.messages.includes(:user).order(id: :desc).page(params[:page]).per(10)
+    @messages = @board.messages.includes(:user).last(10)
     @message = Message.new
   end
 
