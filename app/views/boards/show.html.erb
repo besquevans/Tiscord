@@ -1,9 +1,9 @@
-<div class="wrap d-flex vh-100">
-  <div class="group-list bg-dark fixed-top h-100">
+<div id="main-content" class="wrap d-flex">
+  <div class="group-list bg-dark h-100">
     <%= render  "/groups/group_list", newgroup:@newgroup, groups: @groups %>
   </div>
 
-  <div class="baord-list bg-secondary fixed-top h-100">
+  <div class="baord-list bg-secondary h-100">
     <%= render  "/boards/board_list", group: @group, boards: @boards, board: @board, newboard: @newboard %>
   </div>
 

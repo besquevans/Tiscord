@@ -1,20 +1,44 @@
+body {
+  overflow: hidden; 
+}
+
+#main-navbar{
+  min-height: 70px;
+  height: 7vh;
+}
+
+#main-content{
+  margin-top: 8vh;
+  height: 85vh;
+}
+
 .group-list {
   width: 70px;
+  overflow: scroll;
 }
 
 .baord-list {
-  margin-left: 70px;
   width: 160px;
+  overflow: scroll;
 }
 
 .messages-list {
-  margin-left: 230px
+  overflow: scroll;
+  margin-bottom: 50px;
 }
 
 #board-messages{
-  margin-bottom: 38px
+  margin-bottom: 38px;
 }
 
 .message-form {
-  padding-left: 230px
+  // padding-left: 230px;
+
+  input {
+    height: 7vh
+  }
+}
+
+.modal-backdrop {
+  z-index: -5;
 }
