@@ -30,6 +30,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise', '~> 4.7', '>= 4.7.2'
 gem 'foreman', '~> 0.87.2'
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
+gem 'faker', '~> 2.13'
+gem 'figaro', '~> 1.0'
+gem 'carrierwave', '~> 2.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
