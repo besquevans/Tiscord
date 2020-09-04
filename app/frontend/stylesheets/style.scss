@@ -1,19 +1,19 @@
 body {
-  overflow: hidden; 
+  overflow: hidden;
   height: 100vh;
 }
 
 #main-navbar{
-  min-height: 70px;
+  height: 50px;
 }
 
 #main-content{
-  margin-top: 70px;
-  height: 100%;
+  margin-top: 50px;
+  // height: 100%;
 //   position: relative;
 //   width: 100%;
 //   font-size: 0;
-  
+
 
   .row {
     height: 100vh;

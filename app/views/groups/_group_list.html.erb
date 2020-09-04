@@ -1,7 +1,7 @@
 <div class="modal fade" id="new-group" tabindex="-1" role="dialog" aria-labelledby="new-group-Label" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      
+
       <%= form_with(model: newgroup, local: true, html: {class: "my-4"}) do |form| %>
         <div class="modal-body">
           <h3>New Group</h3>
@@ -21,20 +21,15 @@
   </div>
 </div>
 
-<% groups.each do |g| %>
-  <!------g.boards.first.id????------------------------------->
-  <%= link_to group_board_path(g, g.boards.first.id)  do %> 
-    <div class="card mb-2 mx-2 ">
-      <div class="card-body">
-        <h5 class="card-title text-muted">
-          <%= g.name %>
-        </h5>
-      </div>
-    </div>
+<div class="groups-list px-2">
+  <% groups.each do |g| %>
+    <!------g.boards.first.id????------------------------------->
+    <%= link_to group_board_path(g, g.boards.first.id), class: "d-block my-2"  do %>
+      <%= image_tag g.avatar.url, class: "w-100 rounded-circle" if g.avatar %>
+    <% end %>
   <% end %>
-<% end %>
 
-<button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#new-group">
-  +
-</button>
-
+  <div type="button" class="btn btn-primary rounded-circle d-block w-100 h-auto", data-toggle="modal" data-target="#new-group">
+    <p class="my-2">+</p>
+  </div>
+</div>
