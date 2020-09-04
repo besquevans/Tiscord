@@ -43,19 +43,19 @@ namespace :dev do
       Group.create!(
         remote_avatar_url: "https://picsum.photos/500/500/?random=#{num}",
         name: Faker::Name.first_name,
-        manager_id: User.all.sample(1).first.id
+        manager_id: User.find(User.pluck(:id).sample).id
       )
       print "."
     end
 
-    puts "\n成功建立 #{Group.count} 筆 使用者 group 資料！"
+    puts "\n成功建立 #{Group.count} 筆 group 資料！"
   end
 
   task fake_boards: :environment do
     print "\n正在建立使用者 boards 資料"
     Board.destroy_all
 
-    count = 3
+    count = 2
     Group.all.each do |group|
       count.times do
         group.boards.create!(
@@ -65,12 +65,31 @@ namespace :dev do
       end
     end
 
-    puts "\n成功建立 #{Board.count} 筆 使用者 board 資料！"
+    puts "\n成功建立 #{Board.count} 筆 board 資料！"
+  end
+
+  task fake_messages: :environment do
+    print "\n正在建立使用者 messages 資料"
+    Message.destroy_all
+
+    count = 8
+    Board.all.each do |group|
+      count.times do
+        group.messages.create!(
+          content: Faker::Lorem.sentence,
+          user_id: User.find(User.pluck(:id).sample).id
+        )
+        print "."
+      end
+    end
+
+    puts "\n成功建立 #{Message.count} 筆 message 資料！"
   end
 
   task fake_all: :environment do
     Rake::Task["dev:fake_users"].invoke
     Rake::Task["dev:fake_groups"].invoke
     Rake::Task["dev:fake_boards"].invoke
+    Rake::Task["dev:fake_messages"].invoke
   end
 end
