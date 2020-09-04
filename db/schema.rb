@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2020_09_04_134147) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "boards", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "group_id"
+    t.bigint "group_id"
     t.index ["group_id"], name: "index_boards_on_group_id"
   end
 
@@ -29,11 +32,11 @@ ActiveRecord::Schema.define(version: 2020_09_04_134147) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "board_id"
+    t.bigint "board_id"
     t.index ["board_id"], name: "index_messages_on_board_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
