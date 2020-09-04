@@ -3,4 +3,6 @@ class Group < ApplicationRecord
   validates :manager_id, presence: true
 
   has_many :boards
+
+  mount_uploader :avatar, AvatarUploader   #carrierwave
 end
