@@ -1,24 +1,12 @@
 class GroupsController < ApplicationController
-  def index 
+  def index
     @groups = Group.all
     @newgroup = Group.new
 
     # @baords = @groups.map{|group| group.boards.first}
   end
 
-  # def show 
-  #   @groups = Group.all
-  #   @newgroup = Group.new
-  #   @group = Group.find(params[:id])
-
-  #   @boards = @group.boards
-  #   @board = Board.new
-
-  #   @messages = @board.messages
-  #   @message = Message.new
-  # end
-
-  def create 
+  def create
     @group = Group.create(group_params)
     @board = @group.boards.create(name: "First board")
     if @group.save && @board.save
@@ -34,7 +22,7 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:name).merge(manager_id: current_user.id)
   end
 
-  def board_params 
+  def board_params
     params.require(:board).permit(:name)
   end
 end

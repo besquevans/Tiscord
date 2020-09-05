@@ -21,15 +21,15 @@
   </div>
 </div>
 
-<div class="groups-list px-2">
+<div class="groups-items d-flex flex-column align-items-center w-100 px-2 ">
   <% groups.each do |g| %>
     <!------g.boards.first.id????------------------------------->
-    <%= link_to group_board_path(g, g.boards.first.id), class: "d-block my-2"  do %>
+    <%= link_to group_board_path(g, g.boards.first.id), class: "d-block my-2 group-item"  do %>
       <%= image_tag g.avatar.url, class: "w-100 rounded-circle" if g.avatar %>
     <% end %>
   <% end %>
 
-  <div type="button" class="btn btn-primary rounded-circle d-block w-100 h-auto", data-toggle="modal" data-target="#new-group">
-    <p class="my-2">+</p>
+  <div class="btn bg-secondary text-light text-center rounded-circle group-item d-flex justify-content-center align-items-center", data-toggle="modal" data-target="#new-group">
+    <span>+</span>
   </div>
 </div>

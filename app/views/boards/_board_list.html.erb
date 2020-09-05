@@ -21,14 +21,16 @@
   </div>
 </div>
 
-<% boards.each do |b| %>
-  <%= link_to  group_board_path(group, b) do %>
-    <div class="card my-1 mx-1 p-1">
+<div class="board-items px-1">
+  <% boards.each do |b| %>
+    <%= link_to group_board_path(group, b, anchor: "message-#{b.messages.last.id}") do %>
+      <div class="card my-1 p-1">
         <%= b.name %>
-    </div>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
 
-<button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#new-board">
-  +
-</button>
+  <button class="card btn bg-secondary text-light justify-content-center w-100 my-1 p-1" data-toggle="modal" data-target="#new-board">
+    <span class="d-block m-auto">+</span>
+  </button>
+</div>
