@@ -1,8 +1,8 @@
-<div id="board-messages">
-  <%= render partial: "/messages/message", collection: messages %>  
+<div id="board-messages" class="h-100">
+  <%= render partial: "/messages/message", collection: messages %>
 </div>
 
-<%= form_with(model: message, url: group_board_messages_path(group, board) ,local: true, html: {class: "message-form form-inline"}) do |form| %>
+<%= form_with(model: Message.new, url: group_board_messages_path(group, board) ,local: true, html: {class: "message-form form-inline"}) do |form| %>
   <div class="form-group w-100 mx-0">
     <%= form.text_field :content, placeholder: "輸入訊息", class: "col-9 form-control " %>
     <%= form.submit "Create", class:"col-3 btn btn-primary" %>

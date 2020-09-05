@@ -2,7 +2,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
 
-      <%= form_with(model: newgroup, local: true, html: {class: "my-4"}) do |form| %>
+      <%= form_with(model: Group.new, local: true, html: {class: "my-4"}) do |form| %>
         <div class="modal-body">
           <h3>New Group</h3>
           <div class="form-group">
@@ -22,10 +22,9 @@
 </div>
 
 <div class="groups-items d-flex flex-column align-items-center w-100 px-2 ">
-  <% groups.each do |g| %>
-    <!------g.boards.first.id????------------------------------->
-    <%= link_to group_board_path(g, g.boards.first.id), class: "d-block my-2 group-item"  do %>
-      <%= image_tag g.avatar.url, class: "w-100 rounded-circle" if g.avatar %>
+  <% groups.each do |group| %>
+    <%= link_to group_boards_path(group), class: "d-block my-2 group-item"  do %>
+      <%= image_tag group.avatar.url, class: "w-100 rounded-circle" if group.avatar %>
     <% end %>
   <% end %>
 

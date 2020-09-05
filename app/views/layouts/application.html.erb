@@ -10,15 +10,15 @@
   </head>
 
   <body>
-    <%= render partial: "layouts/navbar" %>
-    
     <% if notice %>
       <div class="alert alert-primary" role="alert">
         <%= notice %>
       </div>
     <% end %>
-    
-    
+
+    <%= render partial: "layouts/navbar" %>
+
     <%= yield %>
+    </div>
   </body>
 </html>
