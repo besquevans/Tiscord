@@ -30,13 +30,16 @@ body {
 }
 
 #message-items{
-  height: calc(100% - 280px);
-  min-height: 500px;
-  overflow: auto;
+  height: calc(100vh - 52px);
+  padding-bottom: 35px;
+  overflow-y: scroll;
 }
 
 .message-form {
+  position: absolute;
+  bottom: 2px;
   height: 52px;
+  width: calc(100% - 25px);
 }
 
 ::placeholder {
