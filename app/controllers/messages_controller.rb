@@ -5,13 +5,9 @@ class MessagesController < ApplicationController
     @group = Group.find(params[:group_id])
     @board = Board.find(params[:board_id])
     @message = @board.messages.create(message_params)
-
     @message.save
-    html = render(
-      partial: "messages/message",
-      locals: { message: @message }
-    )
-    ActionCable.server.broadcast "board_channel_#{@board.id}", html: html
+
+    SendMessageJob.perform_later(@message)
 
 
     # cable_ready["board_channel_#{@board.id}"].insert_adjacent_html(

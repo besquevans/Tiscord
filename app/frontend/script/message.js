@@ -1,5 +1,6 @@
 document.addEventListener("turbolinks:load", () => {
   const messageItems = document.querySelector("#message-items")
-  messageItems.scrollTop = messageItems.scrollHeight
-  // console.log("111")
+  const jumpToBottom = () => messageItems.scrollTop = messageItems.scrollHeight
+
+  if (messageItems){ jumpToBottom() }
 })
