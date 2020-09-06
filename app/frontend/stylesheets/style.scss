@@ -29,15 +29,17 @@ body {
   }
 }
 
-
-#board-messages{
-  margin-bottom: 15%;
+#message-items{
+  height: calc(100% - 280px);
+  min-height: 500px;
+  overflow: auto;
 }
 
 .message-form {
-  position: fixed;
-  width: 100%;
-  right: 0;
-  bottom: 0;
-  padding-left: 25%;
+  height: 52px;
+}
+
+::placeholder {
+  color: #fff;
+  opacity: 1; /* Firefox */
 }

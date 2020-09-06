@@ -22,11 +22,13 @@
 </div>
 
 <div class="board-items px-1">
-  <% boards.each do |b| %>
-    <%= link_to group_board_path(group, b, anchor: "message-#{b.messages.last.id}") do %>
-      <div class="card my-1 p-1">
-        <%= b.name %>
-      </div>
+  <% if boards.present? %>
+    <% boards.each do |board| %>
+      <%= link_to group_board_path(group, board) do %>
+        <div class="card bg-secondary text-warning my-1 p-1">
+          <%= board.name %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 

@@ -22,8 +22,8 @@ class BoardsController < ApplicationController
 
   def create
     @group = Group.find(params[:group_id])
-    @newboard = @group.boards.create(board_params)
-    if @newboard.save
+    @board = @group.boards.create(board_params)
+    if @board.save
       redirect_to group_boards_path(@group), notice: "group create success"
     else
       redirect_to group_boards_path(@group), notice: "group create false"
