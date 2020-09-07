@@ -1,0 +1,13 @@
+<div class="py-2 mr-2">
+  <%= image_tag message.user.avatar.url, width: "40px", class: "rounded-circle" %>
+</div>
+
+<div class="content">
+  <span class="name"><%= message.user.username %></span>
+
+  <p class="my-0"><%= message.content %></p>
+
+  <small class="text-secondary time">
+    <%= time_ago_in_words message.created_at %> ago
+  </small>
+</div>

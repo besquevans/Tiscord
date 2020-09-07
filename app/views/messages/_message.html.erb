@@ -1,14 +1,3 @@
-<div class="card mb-2 px-2 flex-row bg-secondary text-light" id=message-<%= message.id %>>
-  <div class="py-2 mr-2">
-    <%= image_tag message.user.avatar.url, width: "40px", class: "rounded-circle" %>
-  </div>
-
-  <div class="card-text">
-    <small>
-      <%= message.user.username %>
-      - <%= time_ago_in_words message.created_at %> ago
-    </small>
-
-    <p><%= message.content %></p>
-  </div>
+<div class="card mb-2 px-2 flex-row bg-dark text-light <%= 'me' if message.user == current_user %>">
+  <%= render "messages/message_inner", message: message %>
 </div>

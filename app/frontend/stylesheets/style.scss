@@ -29,10 +29,27 @@ body {
   }
 }
 
-#message-items{
+#message-items {
   height: calc(100vh - 95px);
   padding-bottom: 35px;
   overflow-y: scroll;
+
+  .content {
+    .name {
+      font-size: 12px;
+    }
+    .time {
+      font-size: 10px;
+    }
+  }
+  .me {
+    flex-direction: row-reverse !important;
+    text-align: end;
+    .content {
+      margin-left: auto;
+      margin-right: 10px;
+    }
+  }
 }
 
 .message-form {
