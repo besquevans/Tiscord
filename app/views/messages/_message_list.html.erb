@@ -4,7 +4,7 @@
 
 <div id="message-items">
   <% if messages.present? %>
-    <%= render partial: "/messages/message", collection: messages %>
+    <%= render partial: "/messages/message", collection: messages, as: :message %>
   <% end %>
 </div>
 

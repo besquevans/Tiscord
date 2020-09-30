@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   mount_uploader :avatar, AvatarUploader   #carrierwave
+
+  has_many :messages, dependent: :destroy
 end

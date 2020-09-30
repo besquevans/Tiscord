@@ -26,7 +26,7 @@
     <% boards.each do |board| %>
       <%= link_to group_board_path(group, board) do %>
         <div class="card bg-secondary text-warning my-1 p-1">
-          <%= board.name %>
+          <p class="m-0">#<%= board.name %></p>
         </div>
       <% end %>
     <% end %>
