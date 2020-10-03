@@ -21,18 +21,18 @@
   </div>
 </div>
 
-<div class="board-items px-1">
+<div class="board-items">
   <% if boards.present? %>
     <% boards.each do |board| %>
-      <%= link_to group_board_path(group, board) do %>
-        <div class="card bg-secondary text-warning my-1 p-1">
+      <%= link_to group_board_path(group, board), class: "d-block px-1" do %>
+        <div class="card bg-dark text-light border-0 my-1 py-1 px-2">
           <p class="m-0">#<%= board.name %></p>
         </div>
       <% end %>
     <% end %>
   <% end %>
 
-  <button class="card btn bg-secondary text-light justify-content-center w-100 my-1 p-1" data-toggle="modal" data-target="#new-board">
+  <button class="card btn bg-dark text-light justify-content-center border-0 w-100 my-1 p-1" data-toggle="modal" data-target="#new-board">
     <span class="d-block m-auto">+</span>
   </button>
 </div>
