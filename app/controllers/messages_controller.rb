@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
     @group = Group.find(params[:group_id])
     @board = Board.find(params[:board_id])
     @message = @board.messages.create(message_params)
+    authorize @message
     @message.save
 
     SendMessageJob.perform_later(@message)
