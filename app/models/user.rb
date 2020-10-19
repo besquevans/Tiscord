@@ -8,5 +8,8 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader   #carrierwave
 
+  has_many :own_groups, foreign_key: :manager_id, class_name: "Group", dependent: :destroy #使用者建立的群組
+  has_many :groupusers, foreign_key: :user_id, dependent: :destroy  #記錄使用者與群組的中間表
+  has_many :groups, through: :groupusers   #使用者參加的群組
   has_many :messages, dependent: :destroy
 end
