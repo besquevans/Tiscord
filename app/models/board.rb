@@ -1,10 +1,10 @@
 class Board < ApplicationRecord
   validates :name, presence: true
+  before_destroy :board_cannot_less_one
 
   belongs_to :group
   has_many :messages, dependent: :destroy
 
-  before_destroy :board_cannot_less_one
 
   private
 
