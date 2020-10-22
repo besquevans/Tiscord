@@ -1,17 +1,21 @@
 class BoardsController < ApplicationController
-  def index
-    group = Group.find(params[:group_id])
-    board_id = group.boards.first.id
-    redirect_to group_board_path(params[:group_id], board_id)  #跳轉到第一個版
-  end
-
   def show
     @groups = current_user.groups #使用者參加的群組
-    @group = Group.find(params[:group_id])
+
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+    else
+      @group = current_user.groups.first
+    end
     # @newgroup = Group.new
 
     @boards = @group.boards
-    @board = Board.find(params[:id])
+    if params[:id]
+      @board = Board.find(params[:id])
+    else
+      @board = @group.boards.first
+    end
+
     authorize @board     #pundit 使用者權限驗證
     session[:board_id] = @board.id
     # @newboard = Board.new

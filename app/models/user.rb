@@ -12,4 +12,16 @@ class User < ApplicationRecord
   has_many :groupusers, foreign_key: :user_id, dependent: :destroy  #記錄使用者與群組的中間表
   has_many :groups, through: :groupusers   #使用者參加的群組
   has_many :messages, dependent: :destroy
+
+  after_create :create_own_group
+
+  def create_own_group #建立預設群組
+    group = Group.create(name: "my first group", manager_id: self.id)
+    group.boards.create(name: "my first board")
+    group.users << self
+  end
+
+  def avatar_url
+    avatar.url ? avatar.url : "/default_avatar.png"
+  end
 end

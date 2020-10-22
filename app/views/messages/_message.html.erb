@@ -6,7 +6,7 @@
 
 <div class="card mb-2 px-2 flex-row bg-dark text-light <%= 'me' if message.user == current_user %>">
   <div class="py-2 mr-2">
-    <%= image_tag message.user.avatar.url, width: "40px", class: "rounded-circle" %>
+    <%= image_tag message.user.avatar_url, width: "40px", class: "rounded-circle" %>
   </div>
 
   <div class="content">

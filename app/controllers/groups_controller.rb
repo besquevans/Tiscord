@@ -1,10 +1,5 @@
 class GroupsController < ApplicationController
-  def index
-    @groups = Group.all
-    @newgroup = Group.new
 
-    # @baords = @groups.map{|group| group.boards.first}
-  end
 
   def create
     @group = Group.create(group_params)
