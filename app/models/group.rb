@@ -1,4 +1,5 @@
 class Group < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader   #carrierwave
   validates :name, presence: true
   validates :manager_id, presence: true
 
@@ -7,5 +8,7 @@ class Group < ApplicationRecord
   has_many :users, through: :groupusers   #群組裡的使用者
   has_many :boards, dependent: :destroy
 
-  mount_uploader :avatar, AvatarUploader   #carrierwave
+  def avatar_url
+    avatar.url ? avatar.url : "/default_group.png"
+  end
 end

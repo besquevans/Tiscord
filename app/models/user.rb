@@ -20,4 +20,8 @@ class User < ApplicationRecord
     group.boards.create(name: "my first board")
     group.users << self
   end
+
+  def avatar_url
+    avatar.url ? avatar.url : "/default_avatar.png"
+  end
 end
