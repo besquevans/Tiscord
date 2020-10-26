@@ -10,11 +10,7 @@
   </head>
 
   <body>
-    <% if notice %>
-      <div class="alert alert-primary" role="alert">
-        <% notice %>
-      </div>
-    <% end %>
+    <%= render partial: "shared/alert" %>
 
     <%= render partial: "layouts/navbar" %>
 

@@ -2,10 +2,16 @@ body {
   overflow: hidden;
   // height: 100vh;
 }
+.alert{
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+}
 
 #main-navbar{
   height: 50px;
   margin-bottom: 1px;
+  position: absolute;
 }
 
 #main-content{
