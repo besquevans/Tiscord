@@ -30,9 +30,9 @@ class BoardsController < ApplicationController
     @board = @group.boards.create(board_params)
     authorize @board
     if @board.save
-      redirect_to group_boards_path(@group), notice: "group create success"
+      redirect_to group_board_path(@group, @board), notice: "board create success"
     else
-      redirect_to group_boards_path(@group), notice: "group create false"
+      redirect_to group_board_path(@group, @board), notice: "board create false"
     end
   end
 
