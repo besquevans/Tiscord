@@ -1,5 +1,8 @@
 class Group < ApplicationRecord
+  extend FriendlyId
+  friendly_id :friendly_id, use: :slugged
   mount_uploader :avatar, AvatarUploader   #carrierwave
+
   validates :name, presence: true
   validates :manager_id, presence: true
 
@@ -10,5 +13,9 @@ class Group < ApplicationRecord
 
   def avatar_url
     avatar.url ? avatar.url : "/default_group.png"
+  end
+
+  def friendly_id
+    Digest::SHA1.hexdigest([Time.now, rand].join)[1..10]
   end
 end
