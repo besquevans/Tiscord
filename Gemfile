@@ -34,6 +34,7 @@ gem 'faker', '~> 2.13'
 gem 'figaro', '~> 1.0'
 gem 'carrierwave', '~> 2.1'
 gem 'pundit', '~> 2.1' #身份驗證
+gem 'friendly_id', '~> 5.4', '>= 5.4.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
