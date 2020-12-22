@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :set_user
 
-  helper_method :is_new_date?
+  helper_method :current_group, :current_board
 
   private
 
@@ -18,7 +18,31 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def is_new_date?(message)
-    Message.find(message.id - 1).created_at.strftime("%F") != message.created_at.strftime("%F")
+  def current_group
+    @groups ||= current_user.groups #使用者參加的群組
+
+    if params[:group_id]
+      @group ||= @groups.find(params[:group_id])
+    else
+      @group ||= @groups.first
+    end
+  end
+
+  def current_board
+    @boards ||= current_group.boards.includes(:messages)
+
+    if params[:id]
+      @board ||= @boards.find(params[:id])
+    else
+      @board ||= @boards.first
+    end
+  end
+
+  def set_message_new_date
+    @messages.each_with_index do |message, index|
+      if message.created_at.strftime("%F") != @messages[index - 1].created_at.strftime("%F")
+        message.new_date = true
+      end
+    end
   end
 end
