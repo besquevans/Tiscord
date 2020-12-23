@@ -1,4 +1,5 @@
-<% if is_new_date?(message) %>
+
+<% if message.new_date %>
   <div class="date-line text-center text-light">
     - <%= message.created_at.strftime("%F") %> -
   </div>

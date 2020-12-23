@@ -1,10 +1,9 @@
 class MessagesController < ApplicationController
+  # before_action :current_board, only: [:create]
   # include CableReady::Broadcaster
 
   def create
-    @group = Group.find(params[:group_id])
-    @board = Board.find(params[:board_id])
-    @message = @board.messages.create(message_params)
+    @message = current_board.messages.create(message_params)
     authorize @message
     @message.save
 

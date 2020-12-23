@@ -1,24 +1,25 @@
+<%# <% byebug %>
 <div id="main-content" class="w-100">
   <div class="container-fluid px-0">
     <div class="row no-gutters">
       <div class="col-1">
         <div class="group-list bg-dark h-100 overflow-auto">
-          <%= render "/groups/group_list", groups: @groups %>
+          <%= render "/groups/group_list", groups: all_groups %>
         </div>
       </div>
 
       <div class="col-2">
         <div class="baord-list bg-dark border border-secondary h-100 overflow-auto">
-          <% if @group.present? %>
-            <%= render "/boards/board_list", group: @group, boards: @boards %>
+          <% if current_group.present? %>
+            <%= render "/boards/board_list", group: current_group, boards: all_boards %>
           <% end %>
         </div>
       </div>
 
       <div class="col-9 overflow-auto">
         <div class="message-list bg-dark border border-secondary h-100 overflow-auto px-1">
-          <% if @board.present? %>
-            <%= render "/messages/message_list", group: @group, board: @board, messages: @messages %>
+          <% if current_board.present? %>
+            <%= render "/messages/message_list", group: current_group, board: current_board, messages: @messages %>
           <% end %>
         </div>
       </div>

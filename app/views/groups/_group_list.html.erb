@@ -23,7 +23,7 @@
 
 <div class="groups-items d-flex flex-column align-items-center w-100 px-2 ">
   <% groups.each do |group| %>
-    <%= link_to group_boards_path(group.slug), class: "d-block my-2 group-item"  do %>
+    <%= link_to group_board_path(group.slug, group.boards.first), class: "d-block my-2 group-item"  do %>
       <%= image_tag group.avatar_url, class: "w-100 rounded-circle border" %>
     <% end %>
   <% end %>
