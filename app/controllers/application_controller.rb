@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :set_user
 
-  helper_method :current_group, :current_board
+  helper_method :all_groups, :current_group, :all_boards, :current_board
 
   private
 
@@ -18,23 +18,27 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def current_group
-    @groups ||= current_user.groups #使用者參加的群組
+  def all_groups #使用者參加的群組
+    @groups ||= current_user.groups
+  end
 
+  def current_group #當前群組
     if params[:group_id]
-      @group ||= @groups.find(params[:group_id])
+      @group ||= all_groups.includes(:boards).find(params[:group_id])
     else
-      @group ||= @groups.first
+      @group ||= all_groups.includes(:boards).first
     end
   end
 
-  def current_board
-    @boards ||= current_group.boards.includes(:messages)
+  def all_boards #目前群組的看板
+    @boards ||= current_group.boards
+  end
 
+  def current_board #當前看板
     if params[:id]
-      @board ||= @boards.find(params[:id])
+      @board ||= all_boards.find(params[:id])
     else
-      @board ||= @boards.first
+      @board ||= all_boards.first
     end
   end
 
