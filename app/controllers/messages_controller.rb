@@ -1,14 +1,13 @@
 class MessagesController < ApplicationController
-  # before_action :current_board, only: [:create]
   # include CableReady::Broadcaster
 
   def create
-    @message = current_board.messages.create(message_params)
+    @board = Board.find(params[:board_id])
+    @message = @board.messages.new(message_params)
     authorize @message
     @message.save
 
     SendMessageJob.perform_later(@message)
-
 
     # cable_ready["board_channel_#{@board.id}"].insert_adjacent_html(
     #   selector: "#message-items",

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   root "boards#show"
   resources :groups, only: [:create, :update] do
-    resources :boards, only: [:index, :show, :create, :update, :destroy]
+    resources :boards, only: [:index, :create]
   end
 
-  resources :boards do
+  resources :boards, only: [:show, :update, :destroy] do
     resources :messages, only: [:create]
   end
 

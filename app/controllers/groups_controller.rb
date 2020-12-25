@@ -1,11 +1,11 @@
 class GroupsController < ApplicationController
   def create
-    @group = Group.create(group_params)
-    @board = @group.boards.create(name: "First board")
-    @group.users << current_user
+    @group = Group.new(group_params)
+    @board = @group.boards.new(name: "First board")
 
     if @group.save && @board.save
-      redirect_to(group_board_path(group_id: @group.id, id: @board.id), notice: "Group create success!")
+      @group.users << current_user
+      redirect_to(board_path(@board.slug), notice: "Group create success!")
     else
       redirect_back(fallback_location:"/", alert: "Group create false!")
     end
