@@ -11,11 +11,11 @@ class Group < ApplicationRecord
   has_many :users, through: :groupusers   #群組裡的使用者
   has_many :boards, dependent: :destroy
 
-  def avatar_url
+  def avatar_url #群組沒有大頭照 -> 顯示預設圖
     avatar.url ? avatar.url : "/default_group.png"
   end
 
-  def friendly_id
+  def friendly_id  #使用SHA1帶入時間和隨機數產生10位數的新id
     Digest::SHA1.hexdigest([Time.now, rand].join)[1..10]
   end
 end
