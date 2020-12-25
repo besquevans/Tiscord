@@ -1,8 +1,7 @@
 <div class="modal fade" id="new-board" tabindex="-1" role="dialog" aria-labelledby="new-board-Label" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-
-      <%= form_with(model: Board.new, url: group_boards_path(group) ,local: true, html: {class: "my-4"}) do |form| %>
+      <%= form_with(model: Board.new, url: group_boards_path(group_id: group.slug) ,local: true, html: {class: "my-4"}) do |form| %>
         <div class="modal-body">
           <h3>New board</h3>
           <div class="form-board">
@@ -24,7 +23,7 @@
 <div class="board-items">
   <% if boards.present? %>
     <% boards.each do |board| %>
-      <%= link_to group_board_path(group.slug, board), class: "d-block px-1" do %>
+      <%= link_to board_path(board.slug), class: "d-block px-1" do %>
         <div class="card bg-dark text-light border-0 my-1 py-1 px-2">
           <p class="m-0">#<%= board.name %></p>
         </div>

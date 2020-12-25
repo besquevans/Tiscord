@@ -1,21 +1,19 @@
 class GroupsController < ApplicationController
-
-
   def create
-    @group = Group.create(group_params)
+    @group = Group.new(group_params)
+    @board = @group.boards.new(name: "First board")
 
-    @board = @group.boards.create(name: "First board")
     if @group.save && @board.save
-      redirect_to groups_path, notice: "Group create success"
+      @group.users << current_user
+      redirect_to(board_path(@board.slug), notice: "Group create success!")
     else
-      redirect_to groups_path, notice: "Group create false"
+      redirect_back(fallback_location:"/", alert: "Group create false!")
     end
   end
 
   private
 
   def group_params
-    image_url = "https://picsum.photos/500/500/?random=#{rand(1000)}"
-    params.require(:group).permit(:name).merge(manager_id: current_user.id).merge(remote_avatar_url: image_url)
+    params.require(:group).permit(:name).merge!(manager_id: current_user.id)
   end
 end

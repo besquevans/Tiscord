@@ -8,7 +8,7 @@
   <% end %>
 </div>
 
-<%= form_with(model: Message.new, url: board_messages_path(board.id), local: true, html: {class: "message-form form-inline my-1"}) do |form| %>
+<%= form_with(model: Message.new, url: board_messages_path(board.slug), local: true, html: {class: "message-form form-inline my-1"}) do |form| %>
   <div class="form-group w-100 mx-0">
     <%= form.text_field :content, placeholder: "輸入訊息", class: "message-input form-control bg-secondary text-light" %>
 
