@@ -1,9 +1,11 @@
 class BoardsController < ApplicationController
-  def index
-  end
-
   def show
-    @board = Board.find(params[:id])
+    if params[:id]
+      @board = Board.find(params[:id])
+    else
+      @board = all_boards.first
+    end
+
     @group = @board.group
     @messages = @board.messages.includes(:user).last(10)
     set_message_new_date

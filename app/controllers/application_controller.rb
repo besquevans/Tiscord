@@ -24,7 +24,11 @@ class ApplicationController < ActionController::Base
   end
 
   def all_boards #目前群組的看板
-    @boards ||= @board.group.boards
+    if @board
+      @boards ||= @board.group.boards
+    else
+      @boards ||= all_groups.first.boards
+    end
   end
 
   def set_message_new_date #判斷訊息是否為當天第一則
